@@ -21,30 +21,40 @@ const ReviewOfferList = () => {
         if (!res.ok) throw new Error("Error al obtener ofertas pendientes");
         const data = await res.json();
         console.log(data);
-        setPendingOffers(data);
+        setPendingOffers([...data]);
+        console.log(pendingOffers);
       } catch (err) {
-        console.error(err)
-        setPendingOffers([])
+        console.error(err);
+        setPendingOffers([]);
       }
     }
 
-    fetchPendingOffers()
-  });
+    fetchPendingOffers();
+  }, []);
+
+  console.log(pendingOffers);
+
+  const getCategory = (offer) => {
+    if (offer.enterprise.Category) {
+      return offer.enterprise.Category.name;
+    } else {
+      return "Sin categoría";
+    }
+  }
 
   return (
-
-    <div className="flex md:flex-col flex-row flex-wrap gap-4 md:gap-0">
+    <div className="w-full flex md:flex-row flex-col flex-wrap gap-6 md:gap-4 items-center justify-center">
       {pendingOffers.map((offer) => (
         <ReviewOfferCard
           key={offer.id}
           id={offer.id}
-          merchantName={offer.merchant.name}
+          merchantName={offer.enterprise.user.firstName}
           offerTitle={offer.title}
           discount={offer.discountPrice}
           submissionDate={offer.createdAt}
-          expiryDate={offer.expiryDate}
-          status={offer.status}
-          category={offer.category.name}
+          expiryDate={offer.validUntil}
+          status={offer.offerState.toLowerCase()}
+          category={getCategory(offer)}
           onApprove={() => console.log("Approved")}
           onReject={() => console.log("Rejected")}
           onViewDetails={() => console.log("View Details")}
