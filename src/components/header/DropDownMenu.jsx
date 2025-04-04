@@ -11,7 +11,7 @@ export default function EstadosDropdown({ onSelect }) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md border-3 bg-base border-3 border-resaltador px-6 py-2 text-resaltador font-semibold shadow-xs hover:bg-gray-50">
+        <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md border-3 bg-base border-resaltador px-6 py-2 text-resaltador font-semibold shadow-xs hover:bg-gray-50">
           Estado
           <ChevronDownIcon className="size-5.5 fill-resaltador" />
         </MenuButton>

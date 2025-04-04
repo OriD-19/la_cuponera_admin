@@ -23,15 +23,15 @@ export default function OfertasPorEstado() {
         {ofertasFiltradas.length === 0 && selectedState ? (
           <p className="text-sm text-gray-500">No hay ofertas en este estado.</p>
         ) : (
-          <ul className="divide-y divide-gray-200">
+          <ul className="divide-gray-200 flex flex-wrap gap-4 mb-4">
             {ofertasFiltradas.map((offer) => (
-              <li key={offer.id} className="py-2">
-                <div className="border p-4 rounded-lg shadow-md w-80">
-                    <h2 className="text-xl font-bold">{offer.title}</h2>
-                    <p className="text-gray-600">{offer.description}</p>
-                    <p className="text-green-500 font-semibold">Precio con descuento: ${offer.discountPrice}</p>
-                    <p className="text-red-500 line-through">Precio original: ${offer.originalPrice}</p>
-                    <p className="text-sm text-gray-500">Estado: {offer.offerState}</p>
+              <li key={offer.id} className="p-4 rounded-lg shadow-lg w-80 bg-blue-50 ">
+                <div className="">
+                  <h2 className="text-xl font-bold text-center capitalize mb-2">{offer.title}</h2>
+                  <p className="text-gray-500 mb-2 text-lg">{offer.description}</p>
+                  <p className="text-green-700 font-semibold text-md mb-1.5">Precio con descuento: ${offer.discountPrice}</p>
+                  <p className="text-red-500 font-semibold text-md mb-1.5">Precio original: ${offer.originalPrice}</p>
+                  <p className="text-sm text-blue-900 font-semibold mb-1.5 uppercase">Estado: {offer.offerState}</p>
                 </div>
               </li>
             ))}

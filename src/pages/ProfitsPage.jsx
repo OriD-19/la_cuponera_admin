@@ -18,22 +18,16 @@ const ProfitsPage = () => {
   } = useEnterpriseOffers();
 
   useEffect(() => {
-    console.log('Empresas cargadas:', enterprises); 
+    console.log('Empresas cargadas:', enterprises);
   }, [enterprises]);
 
   const handleEnterpriseChange = (enterpriseId) => {
-    console.log('Empresa seleccionada:', enterpriseId); 
+    console.log('Empresa seleccionada:', enterpriseId);
     setSelectedEnterprise(enterpriseId);
 
     if (enterpriseId) {
       fetchOffersByEnterprise(enterpriseId);
     }
-  };
-
-  //Un cierre de sesion porque ocupaba ver si el token se actualiza
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/');
   };
 
   //ya saleeee
@@ -43,12 +37,6 @@ const ProfitsPage = () => {
     <div className="container mx-auto px-4 py-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Ganancias por Empresa</h1>
-        <button
-          onClick={handleLogout}
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
-        >
-          Cerrar Sesión
-        </button>
       </div>
 
       <div className="bg-white shadow-lg rounded-lg p-6 mb-6">

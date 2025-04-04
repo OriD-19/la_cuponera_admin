@@ -15,24 +15,18 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Header/>}>
+          <Route path="/" element={<Header />}>
             <Route index path="/" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/offers" element={<OffersList />} />
-
-            
             <Route path="/category" element={<Category />} />
             <Route path="/category/create" element={<CreateCategorie />} />
             <Route path="/category/edit/:categoryId" element={<EditCategorie />} />
             <Route path="/category/delete/:categoryId" element={<DeleteCategory />} />
+            <Route path="/profits" element={<ProfitsPage />} />
+            <Route path="/clients" element={<ClientsPage />} />
 
-
-            
           </Route>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/profits" element={<ProfitsPage/>} />
-          <Route path="/clients" element={<ClientsPage/>} />
         </Routes>
       </BrowserRouter>
     </>

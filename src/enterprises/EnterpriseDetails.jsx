@@ -25,7 +25,7 @@ const EnterpriseDetails = ({ enterprise, offers, earnings }) => {
   const totalEarnings = earnings;
   const totalCommission = offersArray.reduce((sum, offer) => {
     const soldEarnings = offer.sold * offer.discountPrice;
-    return sum + (soldEarnings * commissionPercentage) / 100;
+    return sum + (soldEarnings * (commissionPercentage/100));
   }, 0);
 
   return (
