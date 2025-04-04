@@ -84,12 +84,13 @@ const LoginForm = () => {
                             onChange={handleOnChange}
                         />
                     </div>
-                    <div>
+                    {/* <div> */}
                         {/* Forgot password? */}
-                        <p className="text-right mb-4">
-                            <a href="#" className="text-blue-500 hover:text-blue-800 text-sm">Forgot Password?</a>
-                        </p>
-                    </div>
+                        {/* <p className="text-right mb-4"> */}
+                            {/* <a href="#" className="text-blue-500 hover:text-blue-800 text-sm">Forgot Password?</a> */}
+                        {/* </p> */}
+                    {/* </div> */}
+                    <br />
                     <button
                         type="submit"
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"

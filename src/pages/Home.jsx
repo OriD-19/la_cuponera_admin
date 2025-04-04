@@ -1,10 +1,10 @@
 import React from 'react'
-import OfferList from '../offers/OfferList'
+import OffersList from '../components/Offert/OfferListCategories'
 
 const Home = () => {
   return (
     <>
-        <OfferList />
+        <OffersList />
     </>
   )
 }
