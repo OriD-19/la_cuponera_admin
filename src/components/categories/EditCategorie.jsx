@@ -118,7 +118,7 @@ const EditCategory = () => {
             }
 
             alert('Categoría actualizada correctamente');
-            navigate('/categories'); // Redirige a la lista de categorías
+            navigate('/category'); // Redirige a la lista de categorías
 
         } catch (error) {
             console.error("Error al actualizar la categoría:", error);

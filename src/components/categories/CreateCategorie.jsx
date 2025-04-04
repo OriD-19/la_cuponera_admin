@@ -1,18 +1,18 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CreateCategorie = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     setLoading(true);
-    setError(null);
-
     const token = localStorage.getItem("token");
 
     try {
@@ -22,32 +22,40 @@ const CreateCategorie = () => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          name,
-          description,
-        }),
+        body: JSON.stringify({ name, description }),
       });
 
       if (!response.ok) {
         throw new Error(`Error en la request: ${response.status}`);
       }
 
-      const data = await response.json();
-      setSuccess(true);
+      toast.success("✅ Categoría creada exitosamente!", {
+        position: "top-right",
+        autoClose: 2000,
+      });
+
       setName('');
       setDescription('');
+
+      // Redirigir después de 2 segundos
+      setTimeout(() => {
+        navigate('/category');
+      }, 2000);
+
     } catch (error) {
-      setError(error.message);
+      toast.error(`❌ Error: ${error.message}`, {
+        position: "top-right",
+        autoClose: 3000,
+      });
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div>
-      <h2>Crear Categoría</h2>
-      {success && <p className="text-green-500">Categoría creada exitosamente.</p>}
-      {error && <p className="text-red-500">Error: {error}</p>}
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+      <h2 className="text-2xl font-bold mb-4">Crear Categoría</h2>
+
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -58,10 +66,11 @@ const CreateCategorie = () => {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             required
           />
         </div>
+
         <div className="mb-4">
           <label htmlFor="description" className="block text-sm font-medium text-gray-700">
             Descripción
@@ -71,10 +80,11 @@ const CreateCategorie = () => {
             id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             required
           />
         </div>
+
         <div className="flex justify-end">
           <button
             type="submit"
