@@ -1,5 +1,5 @@
 import React from 'react'
-import OfferList from '../components/OfferList'
+import OfferList from '../offers/OfferList'
 
 const Home = () => {
   return (
