@@ -2,11 +2,11 @@ import { BrowserRouter, Routes, Route } from 'react-router';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Header from './components/header/Header';
-import OffersList from './components/Offert/OfferList';
 import CreateCategorie from './components/categories/CreateCategorie';
 import Category from './components/categories/Category';
 import EditCategorie from './components/categories/EditCategorie';
 import DeleteCategory from './components/categories/DeleteCategorie';
+import OffersList from './components/Offert/OfferListCategories';
 
 function App() {
   return (
