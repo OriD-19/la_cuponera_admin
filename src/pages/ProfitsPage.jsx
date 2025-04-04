@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import useEnterpriseOffers from '../hooks/useEnterpriseOffers';
 import EnterpriseFilter from '../enterprises/EnterpriseFilter';
-import EnterpriseStats from '../enterprises/EnterpriseStats';
 import EnterpriseDetails from '../enterprises/EnterpriseDetails';
 
 const ProfitsPage = () => {
@@ -37,7 +36,7 @@ const ProfitsPage = () => {
     navigate('/');
   };
 
-  //no sale kldsklfdkmlsfkmmkdmklmk
+  //ya saleeee
   console.log('Ofertas para la empresa seleccionada:', offersByEnterprise[selectedEnterprise])
 
   return (
@@ -59,10 +58,6 @@ const ProfitsPage = () => {
           onEnterpriseChange={handleEnterpriseChange}
         />
 
-        <EnterpriseStats
-          totals={enterpriseEarnings}
-          selectedEnterprise={selectedEnterprise}
-        />
       </div>
 
       <div className="bg-white shadow-lg rounded-lg p-6">
