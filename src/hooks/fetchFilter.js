@@ -1,28 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const fetchFilter = () => {
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [offers, setOffers] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchOffers = async () => {
+      const token = localStorage.getItem("token");
       try {
-        const res = await fetch('https://apiv1.lacuponera.store/api/v1/categories');
-        if (!res.ok) throw new Error('Error al obtener categorías');
-        const data = await res.json();
-        setCategories(data.categories);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+        const response = await fetch("https://apiv1.lacuponera.store/api/v1/admin/offers", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+        if (!response.ok) {
+          throw new Error(`Error en la request: ${response.status}`);
+        }
+        const data = await response.json();
+        setOffers(data.offers);
+      } catch (error) {
+        setError(error.message);
       }
     };
-
-    fetchCategories();
+    fetchOffers();
   }, []);
 
-  return { categories, loading, error };
+  return { offers, error };
 };
 
 export default fetchFilter;

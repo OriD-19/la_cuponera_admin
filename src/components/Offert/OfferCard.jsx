@@ -1,19 +1,13 @@
-import React from 'react'
-
-const OfferCard = ({ title, state, description, originalPrice, discountPrice, validFrom, validUntil}) => {
+const OfferCard = ({ offer }) => {
   return (
-    <>
-        <div className="mb-4 p-4 border rounded shadow-md bg-white">
-            <h2 className="text-lg font-bold">{title}</h2>
-            <p className="text-gray-700">{description}</p>
-            <p className="text-gray-500">State: {state}</p>
-            <p className="text-gray-500">Original Price: ${originalPrice}</p>
-            <p className="text-gray-500">Discount Price: ${discountPrice}</p>
-            <p className="text-gray-500">Valid From: {validFrom}</p>
-            <p className="text-gray-500">Valid Until: {validUntil}</p>
-        </div>
-    </>
-  )
-}
+    <div className="border p-4 rounded-lg shadow-md w-80">
+      <h2 className="text-xl font-bold">{offer.title}</h2>
+      <p className="text-gray-600">{offer.description}</p>
+      <p className="text-green-500 font-semibold">Precio con descuento: ${offer.discountPrice}</p>
+      <p className="text-red-500 line-through">Precio original: ${offer.originalPrice}</p>
+      <p className="text-sm text-gray-500">Estado: {offer.offerState}</p>
+    </div>
+  );
+};
 
-export default OfferCard
+export default OfferCard;

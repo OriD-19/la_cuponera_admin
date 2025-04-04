@@ -1,51 +1,48 @@
-import React, { useEffect } from 'react'
-import { BASE_ADMIN_URL } from '../../api/api';
-import OfferCard from './OfferCard';
+import { useEffect, useState } from "react";
+import OfferCard from "./OfferCard";
+import Filtro from "../header/Filtro";
+import OfertasPorEstado from "./OfertasPorEstado";
 
-const OfferList = () => {
-
-    const [coupons, setCoupons] = React.useState([]);
-    const [loading, setLoading] = React.useState(true);
-    const [error, setError] = React.useState(null);
-
+const OffersList = () => {
+    const [offers, setOffers] = useState([]);
+    const [error, setError] = useState(null);
+  
     useEffect(() => {
-        const fetchOffers = async () => {
-            setLoading(true);
-            // fetch coupons from the API
-            const res = await fetch(BASE_ADMIN_URL + "/offers", {
-                method: 'GET',
-                headers: {
-                    "Authorization": `Bearer ${localStorage.getItem('token')}`,
-                }
-            });
-            const data = await res.json();
-            console.log(data);
-            
-            if (res.ok) {
-                setCoupons(data.offers);
-                setLoading(false);
-                setError(null);
-            } else {
-                console.error('Error fetching coupons:', data.message);
-                setError(data.message);
-            }
+      const fetchOffers = async () => {
+        const token = localStorage.getItem("token");
+        try {
+          const response = await fetch("https://apiv1.lacuponera.store/api/v1/admin/offers", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`,
+            },
+          });
+          if (!response.ok) {
+            throw new Error(`Error en la request: ${response.status}`);
+          }
+          const data = await response.json();
+          setOffers(data.offers);
+        } catch (error) {
+          setError(error.message);
         }
-
-        fetchOffers();
+      };
+      fetchOffers();
     }, []);
-
+  
     return (
-        <>
-            <h1 className="text-3xl font-bold mb-6">La Cuponera | Admin Dashboard</h1>
-            <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full">
-                <ul className="list-disc pl-5">
-                    {coupons.map((coupon) => (
-                        <OfferCard key={coupon.id} title={coupon.title} state={coupon.state} description={coupon.description} originalPrice={coupon.originalPrice} discountPrice={coupon.discountPrice} validFrom={coupon.validFrom} validUntil={coupon.validUntil}/>
-                    ))}
-                </ul>
-            </div> 
-        </>
-    )
-}
-
-export default OfferList
+      <div className="py-4 px-35">
+        <OfertasPorEstado/>
+        {error && <p className="text-red-500">Error: {error}</p>}
+        <div className="flex flex-wrap gap-4">
+          {offers.length > 0 ? (
+            offers.map((offer) => <OfferCard key={offer.id} offer={offer} />)
+          ) : (
+            <p>No hay ofertas disponibles.</p>
+          )}
+        </div>
+      </div>
+    );
+  };
+  
+  export default OffersList;
