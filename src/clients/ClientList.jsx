@@ -17,9 +17,9 @@ const ClientList = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold mb-6">Panel de Clientes</h1>
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full">
-        <div className="">
+      <div className="container mx-auto px-4 py-6">
+      <h1 className="text-3xl font-bold text-gray-800 mb-6">Panel de Clientes</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {clients.map((client) => {
             // el nombre completo, primero accede al user
             const fullName = `${client.user.firstName} ${client.user.lastName}`;
