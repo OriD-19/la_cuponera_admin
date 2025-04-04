@@ -1,12 +1,10 @@
 import React from 'react'
-import OfferList from '../components/Offert/OfferList'
-import OfertasPorEstado from '../components/Offert/OfertasPorEstado'
-import EstadosDropdown from '../components/header/DropDownMenu'
+import OffersList from '../components/Offert/OfferListCategories'
 
 const Home = () => {
   return (
     <>
-        <OfferList  />
+        <OffersList />
     </>
   )
 }
