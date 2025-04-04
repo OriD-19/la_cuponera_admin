@@ -11,7 +11,7 @@ const Navigation = () => {
             {
                 role !== "employee" ?
             <NavLink to="/" className={({ isActive }) => `inline-flex items-center text-black ${isActive ? "text-primary font-bold text-2xl" : ""}`}>
-                Promociones
+                Ofertas
             </NavLink>
             :
             <NavLink to="/empleado/canjear" className={({ isActive }) => `inline-flex items-center text-black ${isActive ? "text-primary font-bold text-2xl" : ""}`}>

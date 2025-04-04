@@ -33,6 +33,8 @@ const OffersList = () => {
     return (
       <div className="py-4 px-35">
         <OfertasPorEstado/>
+
+        <p>TODAS LAS OFERTAS</p>
         {error && <p className="text-red-500">Error: {error}</p>}
         <div className="flex flex-wrap gap-4">
           {offers.length > 0 ? (

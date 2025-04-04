@@ -1,9 +1,6 @@
 import { useState } from "react";
 import fetchFilter from "../../hooks/fetchFilter";
 import EstadosDropdown from "../header/DropDownMenu";
-// import fetchFilter from "../../hooks/fetchFilter";
-// import EstadosDropdown from "../header/DropDownMenu";
-// import OffersList from "./OfferList";
 
 export default function OfertasPorEstado() {
   const { offers } = fetchFilter();

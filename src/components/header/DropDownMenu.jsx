@@ -2,7 +2,7 @@ import fetchFilter from "../../hooks/fetchFilter";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
-export default function EstadosDropdown({ onSelect }) {  // ⬅️ Recibe la prop onSelect
+export default function EstadosDropdown({ onSelect }) { 
   const { offers, loading, error } = fetchFilter();
 
   // Extraer estados únicos
@@ -24,7 +24,7 @@ export default function EstadosDropdown({ onSelect }) {  // ⬅️ Recibe la pro
           {uniqueStates.map((state) => (
             <MenuItem key={state}>
               <button
-                onClick={() => onSelect(state)}  // ⬅️ Se ejecuta cuando se selecciona un estado
+                onClick={() => onSelect(state)} 
                 className="block w-full text-left px-4 py-2 text-sm text-black hover:bg-gray-100 hover:text-resaltador"
               >
                 {state}
