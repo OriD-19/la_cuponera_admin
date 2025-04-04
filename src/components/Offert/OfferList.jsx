@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BASE_ADMIN_URL } from '../api/api';
+import { BASE_ADMIN_URL } from '../../api/api';
 import OfferCard from './OfferCard';
 
 const OfferList = () => {
