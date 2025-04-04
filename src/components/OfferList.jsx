@@ -43,7 +43,7 @@ const OfferList = () => {
                         <OfferCard key={coupon.id} title={coupon.title} state={coupon.state} description={coupon.description} originalPrice={coupon.originalPrice} discountPrice={coupon.discountPrice} validFrom={coupon.validFrom} validUntil={coupon.validUntil}/>
                     ))}
                 </ul>
-            </div>
+            </div> 
         </>
     )
 }
