@@ -18,6 +18,7 @@ const OfferList = () => {
                     "Authorization": `Bearer ${localStorage.getItem('token')}`,
                 }
             });
+            console.log(res.body);
             const data = await res.json();
             console.log(data);
             

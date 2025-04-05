@@ -24,6 +24,8 @@ const LoginForm = () => {
             body: JSON.stringify(formData),
         });
 
+        console.log(formData);
+
         if (!res.ok) {
             console.error('Login failed:', res.statusText);
             return;

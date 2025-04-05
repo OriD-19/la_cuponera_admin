@@ -9,6 +9,8 @@ import DeleteCategory from './components/categories/DeleteCategorie';
 import OffersList from './components/Offert/OfferListCategories';
 import ProfitsPage from './pages/ProfitsPage';
 import ClientsPage from './pages/ClientsPage';
+import ReviewOffers from './pages/ReviewOffers';
+import ManageEnterprises from './pages/ManageEnterprises';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
             <Route path="/profits" element={<ProfitsPage />} />
             <Route path="/clients" element={<ClientsPage />} />
 
+            <Route path="/offers" element={<ReviewOffers />} />
+            <Route path="/enterprises" element={<ManageEnterprises />} />
           </Route>
         </Routes>
       </BrowserRouter>
