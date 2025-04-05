@@ -9,7 +9,7 @@ import DeleteCategory from './components/categories/DeleteCategorie';
 import OffersList from './components/Offert/OfferListCategories';
 import ProfitsPage from './pages/ProfitsPage';
 import ClientsPage from './pages/ClientsPage';
-import ReviewOffers from './pages/ReviewOffers';
+import EnterpriseList from './components/ManageEnterprises/EnterpriseList';
 import ManageEnterprises from './pages/ManageEnterprises';
 
 function App() {
@@ -27,9 +27,7 @@ function App() {
             <Route path="/category/delete/:categoryId" element={<DeleteCategory />} />
             <Route path="/profits" element={<ProfitsPage />} />
             <Route path="/clients" element={<ClientsPage />} />
-
-            <Route path="/offers" element={<ReviewOffers />} />
-            <Route path="/enterprises" element={<ManageEnterprises />} />
+            <Route path="/enterprise" element={<ManageEnterprises />} />
           </Route>
         </Routes>
       </BrowserRouter>
