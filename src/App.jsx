@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Header from './components/header/Header';
 import ReviewOffers from './pages/ReviewOffers';
+import ManageEnterprises from './pages/ManageEnterprises';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Route index path="/" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/offers" element={<ReviewOffers />} />
+            <Route path="/enterprises" element={<ManageEnterprises />} />
           </Route>
         </Routes>
       </BrowserRouter>
